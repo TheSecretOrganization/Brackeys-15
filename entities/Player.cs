@@ -3,38 +3,86 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	private const float Speed = 300.0f;
-	private  const float JumpVelocity = -400.0f;
-	
-	public override void _PhysicsProcess(double delta)
-	{
-		Vector2 velocity = Velocity;
+    private AnimationTree _animationTree;
+    private AnimationNodeStateMachinePlayback _stateMachine;
+    private Sprite2D _sprite2D;
+    private RayCast2D _rayCast2D;
+    
+    private const float Speed = 300.0f;
+    private const float JumpVelocity = -500.0f;
 
-		// Add the gravity.
-		if (!IsOnFloor())
-		{
-			velocity += GetGravity() * (float)delta;
-		}
+    public override void _Ready()
+    {
+        base._Ready();
+        _animationTree = GetNode<AnimationTree>("AnimationTree");
+        _stateMachine = (AnimationNodeStateMachinePlayback)_animationTree.Get("parameters/playback");
+        _sprite2D = GetNode<Sprite2D>("Sprite2D");
+        _rayCast2D = GetNode<RayCast2D>("RayCast2D");
+    }
 
-		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-		{
-			velocity.Y = JumpVelocity;
-		}
+    public override void _PhysicsProcess(double delta)
+    {
+        Vector2 velocity = Velocity;
+        Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if (direction != Vector2.Zero)
-		{
-			velocity.X = direction.X * Speed;
-		}
-		else
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-		}
+        if (!IsOnFloor())
+        {
+            velocity += GetGravity() * (float)delta;
+        }
 
-		Velocity = velocity;
-		MoveAndSlide();
-	}
+        if (Input.IsActionJustPressed("ui_up") && IsOnFloor())
+        {
+            velocity.Y = JumpVelocity;
+        }
+
+        if (direction.X == 0)
+        {
+            velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+        }
+        else
+        {
+            velocity.X = direction.X * Speed;
+        }
+
+        Velocity = velocity;
+        MoveAndSlide();
+        update_animation(direction);
+    }
+
+    private void update_animation(Vector2 direction)
+    {
+        Vector2 velocity = Velocity;
+
+        if (direction.X != 0)
+        {
+            _sprite2D.FlipH = direction.X < 0;
+        }
+
+        if (IsOnFloor())
+        {
+            if (direction.X == 0)
+            {
+                _stateMachine.Travel("idle");
+            }
+            else
+            {
+                _stateMachine.Travel("run");
+            }
+        }
+        else
+        {
+            if (Input.IsActionJustPressed("ui_up")) 
+            {
+                _stateMachine.Travel("jump");
+            }
+            else if (_rayCast2D.IsColliding())
+            {
+                _stateMachine.Travel("land");
+            }
+            else if (velocity.Y >= 0)
+            {
+                _stateMachine.Travel("fall");
+            }
+        }
+    }
 }
