@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://04gsmpbtlt0u" path="res://assets/entities/player.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://bmb3gusvh5m6v" path="res://entities/Player.cs" id="1_b0kkn"]
+[ext_resource type="Texture2D" uid="uid://cyh3033qmse2y" path="res://assets/misc/flashlight_gradient.png" id="3_e4p34"]
+[ext_resource type="Script" uid="uid://cmsctvjjbblsi" path="res://scripts/Lights.cs" id="3_rfe5m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(16, 28)
@@ -169,6 +171,17 @@ states/run/position = Vector2(338.55237, 195.675)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_b0kkn"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_e4p34"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_rfe5m"), "fall", "land", SubResource("AnimationNodeStateMachineTransition_qly61"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_qsoyl"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_6nm46"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_i623q")]
 graph_offset = Vector2(104.93748, -32.077496)
 
+[sub_resource type="Gradient" id="Gradient_e4p34"]
+offsets = PackedFloat32Array(0, 0.6385542, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rfe5m"]
+gradient = SubResource("Gradient_e4p34")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+metadata/_snap_enabled = true
+
 [node name="Player" type="CharacterBody2D" unique_id=1983695808]
 script = ExtResource("1_b0kkn")
 metadata/_edit_group_ = true
@@ -191,3 +204,22 @@ target_position = Vector2(0, 20)
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=233067846]
 tree_root = SubResource("AnimationNodeStateMachine_q0i8f")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="Lights" type="Node2D" parent="." unique_id=427853503 node_paths=PackedStringArray("LightAura", "Flashlight", "FlashlightTimer")]
+script = ExtResource("3_rfe5m")
+LightAura = NodePath("LightAura")
+Flashlight = NodePath("Flashlight")
+FlashlightTimer = NodePath("FlashlightTimer")
+
+[node name="Flashlight" type="PointLight2D" parent="Lights" unique_id=1811593451]
+shadow_enabled = true
+texture = ExtResource("3_e4p34")
+offset = Vector2(30, 0)
+texture_scale = 2.0
+
+[node name="LightAura" type="PointLight2D" parent="Lights" unique_id=22562572]
+texture = SubResource("GradientTexture2D_rfe5m")
+
+[node name="FlashlightTimer" type="Timer" parent="Lights" unique_id=757615605]
+wait_time = 0.25
+one_shot = true
