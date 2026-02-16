@@ -108,23 +108,6 @@ tracks/0/keys = {
 "values": [24, 25, 26, 27, 28, 29, 30, 31]
 }
 
-[sub_resource type="Animation" id="Animation_2hs0m"]
-resource_name = "walk"
-length = 0.8
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [16, 17, 18, 19]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1jxqw"]
 _data = {
 &"RESET": SubResource("Animation_onrkg"),
@@ -132,8 +115,7 @@ _data = {
 &"idle": SubResource("Animation_sweqy"),
 &"jump": SubResource("Animation_i3pqv"),
 &"land": SubResource("Animation_e4p34"),
-&"run": SubResource("Animation_hqtel"),
-&"walk": SubResource("Animation_2hs0m")
+&"run": SubResource("Animation_hqtel")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b0kkn"]

@@ -7,7 +7,7 @@ public partial class Player : CharacterBody2D
     private AnimationNodeStateMachinePlayback _stateMachine;
     private Sprite2D _sprite2D;
     private RayCast2D _rayCast2D;
-    
+   
     private const float Speed = 300.0f;
     private const float JumpVelocity = -500.0f;
 
@@ -24,6 +24,7 @@ public partial class Player : CharacterBody2D
     {
         Vector2 velocity = Velocity;
         Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+        var isJumping = false;
 
         if (!IsOnFloor())
         {
@@ -33,6 +34,7 @@ public partial class Player : CharacterBody2D
         if (Input.IsActionJustPressed("ui_up") && IsOnFloor())
         {
             velocity.Y = JumpVelocity;
+            isJumping = true;
         }
 
         if (direction.X == 0)
@@ -46,10 +48,10 @@ public partial class Player : CharacterBody2D
 
         Velocity = velocity;
         MoveAndSlide();
-        update_animation(direction);
+        UpdateAnimation(direction, isJumping);
     }
 
-    private void update_animation(Vector2 direction)
+    private void UpdateAnimation(Vector2 direction, bool isJumping)
     {
         Vector2 velocity = Velocity;
 
@@ -71,7 +73,7 @@ public partial class Player : CharacterBody2D
         }
         else
         {
-            if (Input.IsActionJustPressed("ui_up")) 
+            if (isJumping) 
             {
                 _stateMachine.Travel("jump");
             }
