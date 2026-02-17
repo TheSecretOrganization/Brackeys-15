@@ -40,7 +40,7 @@ public partial class Player : CharacterBody2D, IKillable
         }
 
         if (direction == 0)
-            velocity.X = Mathf.MoveToward(Velocity.X, 0,  BrakingSpeed);
+            velocity.X = Mathf.MoveToward(Velocity.X, 0, BrakingSpeed);
         else
         {
             if (Mathf.Abs(velocity.X + Speed * direction) > MaxSpeed)
