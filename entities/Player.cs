@@ -7,7 +7,7 @@ public partial class Player : CharacterBody2D
     private AnimationNodeStateMachinePlayback _stateMachine;
     private Sprite2D _sprite2D;
     private RayCast2D _rayCast2D;
-   
+
     private const float Speed = 300.0f;
     private const float JumpVelocity = -500.0f;
 
@@ -73,7 +73,7 @@ public partial class Player : CharacterBody2D
         }
         else
         {
-            if (isJumping) 
+            if (isJumping)
             {
                 _stateMachine.Travel("jump");
             }
