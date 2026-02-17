@@ -226,3 +226,5 @@ texture = ExtResource("2_ny0t1")
 metadata/_edit_lock_ = true
 
 [connection signal="body_entered" from="Void" to="Void" method="OnBodyEntered"]
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1001740467]
+color = Color(0.20152658, 0.20152658, 0.20152658, 1)
