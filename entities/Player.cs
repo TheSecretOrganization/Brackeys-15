@@ -23,7 +23,7 @@ public partial class Player : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         Vector2 velocity = Velocity;
-        Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+        Vector2 direction = Input.GetVector("move_left", "move_right", "move_down", "move_up");
         var isJumping = false;
 
         if (!IsOnFloor())
@@ -31,7 +31,7 @@ public partial class Player : CharacterBody2D
             velocity += GetGravity() * (float)delta;
         }
 
-        if (Input.IsActionJustPressed("ui_up") && IsOnFloor())
+        if (Input.IsActionJustPressed("move_up") && IsOnFloor())
         {
             velocity.Y = JumpVelocity;
             isJumping = true;
