@@ -11,14 +11,14 @@ public partial class Player : CharacterBody2D, IKillable
     private const float Speed = 300.0f;
     private const float JumpVelocity = -500.0f;
 
-	public override void _Ready()
-	{
-		base._Ready();
-		_animationTree = GetNode<AnimationTree>("AnimationTree");
-		_stateMachine = (AnimationNodeStateMachinePlayback)_animationTree.Get("parameters/playback");
-		_sprite2D = GetNode<Sprite2D>("Sprite2D");
-		_rayCast2D = GetNode<RayCast2D>("RayCast2D");
-	}
+    public override void _Ready()
+    {
+        base._Ready();
+        _animationTree = GetNode<AnimationTree>("AnimationTree");
+        _stateMachine = (AnimationNodeStateMachinePlayback)_animationTree.Get("parameters/playback");
+        _sprite2D = GetNode<Sprite2D>("Sprite2D");
+        _rayCast2D = GetNode<RayCast2D>("RayCast2D");
+    }
 
     public override void _PhysicsProcess(double delta)
     {
@@ -26,10 +26,10 @@ public partial class Player : CharacterBody2D, IKillable
         float direction = Input.GetAxis("move_left", "move_right");
         var isJumping = false;
 
-		if (!IsOnFloor())
-		{
-			velocity += GetGravity() * (float)delta;
-		}
+        if (!IsOnFloor())
+        {
+            velocity += GetGravity() * (float)delta;
+        }
 
         if (Input.IsActionJustPressed("move_up") && IsOnFloor())
         {
@@ -46,10 +46,10 @@ public partial class Player : CharacterBody2D, IKillable
             velocity.X = direction * Speed;
         }
 
-		Velocity = velocity;
-		MoveAndSlide();
-		UpdateAnimation(direction, isJumping);
-	}
+        Velocity = velocity;
+        MoveAndSlide();
+        UpdateAnimation(direction, isJumping);
+    }
 
     private void UpdateAnimation(float direction, bool isJumping)
     {
