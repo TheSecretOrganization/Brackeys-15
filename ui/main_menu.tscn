@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cg1jk1oupxnup"]
+
+[ext_resource type="Texture2D" uid="uid://dnm7dfl6rgijx" path="res://assets/ui/spaceship.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://djpl2ykuglopg" path="res://ui/MainMenu.cs" id="1_7vrkn"]
+[ext_resource type="PackedScene" uid="uid://c30k0pg4qsa73" path="res://levels/test.tscn" id="2_wk0pr"]
+
+[node name="Control" type="Control" unique_id=143279427]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7vrkn")
+_level = ExtResource("2_wk0pr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=956609105]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_right = 273.0
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Start" type="Button" parent="VBoxContainer" unique_id=1649213124]
+layout_mode = 2
+text = "Start
+"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=245903334]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2037596769]
+layout_mode = 0
+offset_left = 381.0
+offset_top = 173.0
+offset_right = 1008.0
+offset_bottom = 499.0
+texture = ExtResource("1_06t4h")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=580606831]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="StartButton"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="QuitButton"]
