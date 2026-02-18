@@ -24,13 +24,18 @@ public partial class Player : CharacterBody2D, IKillable
 
     public override void _PhysicsProcess(double delta)
     {
-        Vector2 velocity = Velocity;
-        float direction = Input.GetAxis("move_left", "move_right");
+        var velocity = Velocity;
+        var direction = Input.GetAxis("move_left", "move_right");
         var isJumping = false;
 
         if (!IsOnFloor())
-        {
             velocity += GetGravity() * (float)delta;
+
+        if (_stateMachine.GetCurrentNode() == "dead")
+        {
+            Velocity = velocity;
+            MoveAndSlide();
+            return;
         }
 
         if (Input.IsActionJustPressed("move_up") && IsOnFloor())
@@ -56,43 +61,41 @@ public partial class Player : CharacterBody2D, IKillable
 
     private void UpdateAnimation(float direction, bool isJumping)
     {
-        Vector2 velocity = Velocity;
+        var velocity = Velocity;
 
         if (direction != 0)
-        {
             _sprite2D.FlipH = direction < 0;
-        }
 
         if (IsOnFloor())
         {
-            if (direction == 0)
-            {
-                _stateMachine.Travel("idle");
-            }
-            else
-            {
-                _stateMachine.Travel("run");
-            }
+            _stateMachine.Travel((direction == 0) ? "idle" : "run");
         }
         else
         {
             if (isJumping)
-            {
                 _stateMachine.Travel("jump");
-            }
             else if (_rayCast2D.IsColliding())
-            {
                 _stateMachine.Travel("land");
-            }
             else if (velocity.Y >= 0)
-            {
                 _stateMachine.Travel("fall");
-            }
         }
     }
 
     public void Die()
     {
-        QueueFree();
+        Velocity = Vector2.Zero;
+        _stateMachine.Travel("dead");
+    }
+
+    public void Respawn(Vector2 position)
+    {
+        _stateMachine.Travel("idle");
+        Teleport(position);
+    }
+
+    public void Teleport(Vector2 position)
+    {
+        Velocity = Vector2.Zero;
+        GlobalPosition = position;
     }
 }
