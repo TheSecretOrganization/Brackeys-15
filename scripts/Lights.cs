@@ -46,7 +46,7 @@ public partial class Lights : Node2D
         LightAura.LookAt(mousePosition);
         Flashlight.LookAt(mousePosition);
 
-        if (Input.IsActionJustPressed("ui_down") && FlashlightTimer.IsStopped())
+        if (Input.IsActionJustPressed("flashlight") && FlashlightTimer.IsStopped())
         {
             Flashlight.SetTextureScale(FLASHLIGHT_FLASHBANG_SCALE);
             Flashlight.Offset = FLASHLIGHT_FLASHBANG_OFFSET;
