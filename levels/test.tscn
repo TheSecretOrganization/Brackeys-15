@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://c30k0pg4qsa73"]
 
 [ext_resource type="Texture2D" uid="uid://d4jo38kcel7ir" path="res://assets/terrain/tileset.png" id="1_lkjt4"]
-[ext_resource type="Script" uid="uid://dubrgbv3fgdfg" path="res://levels/PlayerSpawner.cs" id="1_r4e4k"]
+[ext_resource type="Script" uid="uid://mrtcdaorw6t5" path="res://scripts/Manager.cs" id="1_pnvjf"]
 [ext_resource type="Texture2D" uid="uid://bqcnxxc52s2fn" path="res://assets/terrain/background.png" id="2_ny0t1"]
 [ext_resource type="PackedScene" uid="uid://domo5jf13n5pl" path="res://entities/player.tscn" id="3_ny0t1"]
-[ext_resource type="Script" uid="uid://yrb6e4h1r44c" path="res://levels/Void.cs" id="3_pnvjf"]
+[ext_resource type="PackedScene" uid="uid://dudv4id5dlynx" path="res://levels/props/checkpoint.tscn" id="6_6g8e2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r4e4k"]
 distance = -688.0
@@ -202,14 +202,9 @@ terrain_set_0/terrain_0/color = Color(0.53263843, 0.06466472, 0.80197054, 1)
 sources/0 = SubResource("TileSetAtlasSource_206su")
 
 [node name="Game" type="Node" unique_id=101025080]
-
-[node name="PlayerSpawner" type="Node2D" parent="." unique_id=1552574253]
-position = Vector2(297, 390)
-script = ExtResource("1_r4e4k")
-_playerScene = ExtResource("3_ny0t1")
+script = ExtResource("1_pnvjf")
 
 [node name="Void" type="Area2D" parent="." unique_id=1394541601]
-script = ExtResource("3_pnvjf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Void" unique_id=1647840910]
 shape = SubResource("WorldBoundaryShape2D_r4e4k")
@@ -219,6 +214,7 @@ tile_map_data = PackedByteArray("AAD+/xkAAAALAAAAAAD+/xoAAAALAAEAAAD+/xsAAAALAAI
 tile_set = SubResource("TileSet_0u6kl")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1001740467]
+visible = false
 color = Color(0.20152658, 0.20152658, 0.20152658, 1)
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=2016647512]
@@ -231,4 +227,10 @@ position = Vector2(677.75, 361.50003)
 scale = Vector2(4.717014, 5.0833335)
 texture = ExtResource("2_ny0t1")
 
-[connection signal="body_entered" from="Void" to="Void" method="OnBodyEntered"]
+[node name="Player" parent="." unique_id=1983695808 instance=ExtResource("3_ny0t1")]
+position = Vector2(310, 416)
+
+[node name="Checkpoint" parent="." unique_id=1634263764 instance=ExtResource("6_6g8e2")]
+position = Vector2(585, 375)
+
+[connection signal="body_entered" from="Void" to="." method="_onBodyFallOutOfMap"]
