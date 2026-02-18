@@ -8,8 +8,10 @@ public partial class Player : CharacterBody2D, IKillable
     private Sprite2D _sprite2D;
     private RayCast2D _rayCast2D;
 
-    private const float Speed = 300.0f;
-    private const float JumpVelocity = -500.0f;
+    [Export] public float Speed = 20.0f;
+    [Export] public float MaxSpeed = 300.0f;
+    [Export] public float BrakingSpeed = 10.0f;
+    [Export] public float JumpVelocity = -500.0f;
 
     public override void _Ready()
     {
@@ -38,12 +40,13 @@ public partial class Player : CharacterBody2D, IKillable
         }
 
         if (direction == 0)
-        {
-            velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-        }
+            velocity.X = Mathf.MoveToward(Velocity.X, 0, BrakingSpeed);
         else
         {
-            velocity.X = direction * Speed;
+            if (Mathf.Abs(velocity.X + Speed * direction) > MaxSpeed)
+                velocity.X = direction * MaxSpeed;
+            else
+                velocity.X += direction * Speed;
         }
 
         Velocity = velocity;
