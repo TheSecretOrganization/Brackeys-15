@@ -223,3 +223,5 @@ texture = SubResource("GradientTexture2D_rfe5m")
 [node name="FlashlightTimer" type="Timer" parent="Lights" unique_id=757615605]
 wait_time = 0.25
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=872283484]
