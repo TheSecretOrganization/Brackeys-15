@@ -3,9 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d4jo38kcel7ir" path="res://assets/terrain/tileset.png" id="1_lkjt4"]
 [ext_resource type="Script" uid="uid://mrtcdaorw6t5" path="res://scripts/Manager.cs" id="1_pnvjf"]
 [ext_resource type="Texture2D" uid="uid://bqcnxxc52s2fn" path="res://assets/terrain/background.png" id="2_ny0t1"]
-[ext_resource type="PackedScene" uid="uid://cueype650qchv" path="res://levels/props/lightning.tscn" id="3_6g8e2"]
 [ext_resource type="PackedScene" uid="uid://domo5jf13n5pl" path="res://entities/player.tscn" id="3_ny0t1"]
-[ext_resource type="PackedScene" uid="uid://c3j1kvhx4s2ob" path="res://levels/props/rain.tscn" id="3_u45fp"]
 [ext_resource type="PackedScene" uid="uid://dudv4id5dlynx" path="res://levels/props/checkpoint.tscn" id="6_6g8e2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r4e4k"]
@@ -216,26 +214,12 @@ tile_map_data = PackedByteArray("AAD+/xkAAAALAAAAAAD+/xoAAAALAAEAAAD+/xsAAAALAAI
 tile_set = SubResource("TileSet_0u6kl")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1001740467]
-visible = false
-color = Color(0.06262199, 0.06262199, 0.06262199, 1)
+position = Vector2(1, -2)
+color = Color(0.15686275, 0.15686275, 0.15686275, 1)
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=2016647512]
 scroll_scale = Vector2(1, 0.7)
 repeat_size = Vector2(1353.815, 0)
-
-[node name="GPUParticles2D" parent="Parallax2D" unique_id=63346079 instance=ExtResource("3_u45fp")]
-position = Vector2(562, 321)
-scale = Vector2(1.40625, 1.421875)
-amount = 500
-
-[node name="Lightning" parent="Parallax2D" unique_id=1414453070 instance=ExtResource("3_6g8e2")]
-z_index = -1
-position = Vector2(562, 321)
-scale = Vector2(1.40625, 1.421875)
-animation = &"strike_1"
-autoplay = "strike_1"
-frame = 0
-frame_progress = 0.0
 
 [node name="Background" type="Sprite2D" parent="Parallax2D" unique_id=336813519]
 z_index = -2
