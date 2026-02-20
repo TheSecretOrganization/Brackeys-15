@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c2lciwwnxqn21"]
+
+[ext_resource type="PackedScene" uid="uid://c3j1kvhx4s2ob" path="res://levels/props/rain.tscn" id="1_ixxe8"]
+[ext_resource type="PackedScene" uid="uid://duoveemsoak3w" path="res://levels/props/lightning.tscn" id="2_ukrcf"]
+
+[node name="Camera2D" type="Camera2D" unique_id=1484559342]
+
+[node name="Rain" parent="." unique_id=63346079 instance=ExtResource("1_ixxe8")]
+position = Vector2(0, -324)
+emission_rect_extents = Vector2(750, 1)
