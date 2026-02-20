@@ -12,6 +12,7 @@ public partial class Player : CharacterBody2D, IKillable
     [Export] public float MaxSpeed = 300.0f;
     [Export] public float BrakingSpeed = 10.0f;
     [Export] public float JumpVelocity = -500.0f;
+    [Export] public PlayerDialogue Dialogue { get; private set; }
 
     public override void _Ready()
     {
