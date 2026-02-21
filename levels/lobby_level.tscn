@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bdvk5s5wxmmn2" path="res://scripts/AreaDialogue.cs" id="7_8bh2m"]
 [ext_resource type="Texture2D" uid="uid://bqcnxxc52s2fn" path="res://assets/terrain/background.png" id="8_k17w5"]
 [ext_resource type="Script" uid="uid://qftif725v4b4" path="res://scripts/GoEnd.cs" id="8_vebmx"]
+[ext_resource type="AudioStream" uid="uid://b0m6e6pvugkkv" path="res://sounds/Dani Stob - Beyond The Stars - Loop.wav" id="9_vebmx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k17w5"]
 size = Vector2(703, 638)
@@ -55,6 +56,9 @@ sources/0 = SubResource("TileSetAtlasSource_3o0md")
 size = Vector2(907, 673.75)
 
 [sub_resource type="FontFile" id="FontFile_x4ow3"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/variation_coordinates = {}
 cache/0/face_index = 0
 cache/0/embolden = 0.0
@@ -147,5 +151,9 @@ offset_bottom = -282.0
 theme_override_fonts/font = SubResource("FontFile_x4ow3")
 theme_override_font_sizes/font_size = 90
 label_settings = SubResource("LabelSettings_3ourm")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1383497427]
+stream = ExtResource("9_vebmx")
+autoplay = true
 
 [connection signal="ObjectEnd" from="GoToShip" to="." method="ChangeScene"]

@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://qftif725v4b4" path="res://scripts/GoEnd.cs" id="13_41uxy"]
 [ext_resource type="Script" uid="uid://bdvk5s5wxmmn2" path="res://scripts/AreaDialogue.cs" id="13_nuo0o"]
 [ext_resource type="PackedScene" uid="uid://05uc531kdtdm" path="res://levels/props/electrical_wall.tscn" id="15_ybawo"]
+[ext_resource type="AudioStream" uid="uid://b0m6e6pvugkkv" path="res://sounds/Dani Stob - Beyond The Stars - Loop.wav" id="16_ecpn2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c04uq"]
 texture = ExtResource("2_art11")
@@ -858,5 +859,9 @@ scale = Vector2(4, 10)
 position = Vector2(3290.0002, 3207)
 rotation = 4.712389
 scale = Vector2(4, 10)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2092863709]
+stream = ExtResource("16_ecpn2")
+autoplay = true
 
 [connection signal="ObjectEnd" from="GoToEnd" to="." method="ChangeScene"]

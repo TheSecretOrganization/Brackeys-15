@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://ct0783oy2g3fs" path="res://scripts/Pickable.cs" id="13_joaj4"]
 [ext_resource type="Script" uid="uid://bsgwnm5fqkb" path="res://scripts/events/DialogueEvent.cs" id="15_fybgr"]
 [ext_resource type="Script" uid="uid://bdvk5s5wxmmn2" path="res://scripts/AreaDialogue.cs" id="16_vkgm2"]
+[ext_resource type="AudioStream" uid="uid://b0m6e6pvugkkv" path="res://sounds/Dani Stob - Beyond The Stars - Loop.wav" id="17_j24wm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fybgr"]
 texture = ExtResource("1_p0dlw")
@@ -879,6 +880,10 @@ _texts = PackedStringArray("I think i can find what i need here", "Probably near
 position = Vector2(322.5, -40)
 shape = SubResource("RectangleShape2D_j24wm")
 debug_color = Color(0.8013492, 0.02320653, 0.9999998, 0.41960785)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1238539891]
+stream = ExtResource("17_j24wm")
+autoplay = true
 
 [connection signal="ObjectPicked" from="GoToOut" to="." method="ChangeScene"]
 [connection signal="ObjectPicked" from="PickUpHeatSink" to="Event/MotorPicked" method="ShowDialogue"]

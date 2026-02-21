@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://domo5jf13n5pl" path="res://entities/player.tscn" id="5_gfc0n"]
 [ext_resource type="Script" uid="uid://bdvk5s5wxmmn2" path="res://scripts/AreaDialogue.cs" id="7_vu5sc"]
 [ext_resource type="Texture2D" uid="uid://bqcnxxc52s2fn" path="res://assets/terrain/background.png" id="8_fqioi"]
+[ext_resource type="AudioStream" uid="uid://b0m6e6pvugkkv" path="res://sounds/Dani Stob - Beyond The Stars - Loop.wav" id="9_o2teg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o2teg"]
 size = Vector2(707, 389)
@@ -149,5 +150,9 @@ z_index = -2
 position = Vector2(677.75, 361.50003)
 scale = Vector2(23.585, 25.415)
 texture = ExtResource("8_fqioi")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=823906421]
+stream = ExtResource("9_o2teg")
+autoplay = true
 
 [connection signal="ObjectEnd" from="GoToOutro" to="." method="ChangeScene"]
