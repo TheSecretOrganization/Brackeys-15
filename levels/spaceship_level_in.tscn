@@ -700,6 +700,9 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_vkgm2")
 
+[sub_resource type="LabelSettings" id="LabelSettings_j24wm"]
+font_size = 20
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j24wm"]
 texture = ExtResource("1_7sbrg")
 texture_region_size = Vector2i(64, 64)
@@ -708,6 +711,9 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_qf6u7"]
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_j24wm")
+
+[sub_resource type="LabelSettings" id="LabelSettings_pav0j"]
+font_size = 19
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j24wm"]
 size = Vector2(703, 638)
@@ -824,6 +830,7 @@ offset_top = -249.0
 offset_right = 183.0
 offset_bottom = -226.0
 text = "Press E to pick up the Core"
+label_settings = SubResource("LabelSettings_j24wm")
 
 [node name="PickUpHeatSink" type="Area2D" parent="." unique_id=1722067566 node_paths=PackedStringArray("_hint")]
 position = Vector2(5066, 4396)
@@ -854,9 +861,10 @@ offset_top = -584.0
 offset_right = 2732.0
 offset_bottom = -561.0
 text = "Press E to pick up Heat Sink"
+label_settings = SubResource("LabelSettings_pav0j")
 
 [node name="Player" parent="." unique_id=1983695808 instance=ExtResource("5_3am60")]
-position = Vector2(9804, 3661)
+position = Vector2(7934, 3671)
 scale = Vector2(4, 4)
 collision_layer = 7
 collision_mask = 7
