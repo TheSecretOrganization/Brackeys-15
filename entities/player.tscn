@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://04gsmpbtlt0u" path="res://assets/entities/player.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://bmb3gusvh5m6v" path="res://entities/Player.cs" id="1_b0kkn"]
-[ext_resource type="Texture2D" uid="uid://cyh3033qmse2y" path="res://assets/misc/flashlight_gradient.png" id="3_e4p34"]
-[ext_resource type="Script" uid="uid://cmsctvjjbblsi" path="res://scripts/Lights.cs" id="3_rfe5m"]
+[ext_resource type="Script" uid="uid://b2b73x12ksa70" path="res://entities/PlayerDialogue.cs" id="4_rfe5m"]
+[ext_resource type="PackedScene" uid="uid://c2lciwwnxqn21" path="res://entities/camera.tscn" id="5_qly61"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(16, 28)
@@ -202,7 +202,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(132.32744, -13.747542)
 
 [sub_resource type="Gradient" id="Gradient_e4p34"]
-offsets = PackedFloat32Array(0, 0.6385542, 1)
+offsets = PackedFloat32Array(0, 0.527451, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_rfe5m"]
@@ -212,8 +212,15 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 metadata/_snap_enabled = true
 
-[node name="Player" type="CharacterBody2D" unique_id=1983695808]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qly61"]
+light_mode = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_rfe5m"]
+font_size = 10
+
+[node name="Player" type="CharacterBody2D" unique_id=1983695808 node_paths=PackedStringArray("Dialogue")]
 script = ExtResource("1_b0kkn")
+Dialogue = NodePath("CenterContainer")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=714899606]
@@ -235,23 +242,25 @@ target_position = Vector2(0, 20)
 tree_root = SubResource("AnimationNodeStateMachine_q0i8f")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="Lights" type="Node2D" parent="." unique_id=427853503 node_paths=PackedStringArray("LightAura", "Flashlight", "FlashlightTimer")]
-script = ExtResource("3_rfe5m")
-LightAura = NodePath("LightAura")
-Flashlight = NodePath("Flashlight")
-FlashlightTimer = NodePath("FlashlightTimer")
-
-[node name="Flashlight" type="PointLight2D" parent="Lights" unique_id=1811593451]
-shadow_enabled = true
-texture = ExtResource("3_e4p34")
-offset = Vector2(30, 0)
-texture_scale = 2.0
-
-[node name="LightAura" type="PointLight2D" parent="Lights" unique_id=22562572]
+[node name="LightAura" type="PointLight2D" parent="." unique_id=22562572]
+scale = Vector2(4, 4)
 texture = SubResource("GradientTexture2D_rfe5m")
 
-[node name="FlashlightTimer" type="Timer" parent="Lights" unique_id=757615605]
-wait_time = 0.25
-one_shot = true
+[node name="Camera2D" parent="." unique_id=1484559342 instance=ExtResource("5_qly61")]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=872283484]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1391610603 node_paths=PackedStringArray("_label", "_timer")]
+offset_left = -69.0
+offset_top = -41.0
+offset_right = 81.0
+offset_bottom = -27.0
+script = ExtResource("4_rfe5m")
+_label = NodePath("Label")
+_timer = NodePath("Timer")
+
+[node name="Label" type="Label" parent="CenterContainer" unique_id=1414607447]
+material = SubResource("CanvasItemMaterial_qly61")
+layout_mode = 2
+label_settings = SubResource("LabelSettings_rfe5m")
+
+[node name="Timer" type="Timer" parent="CenterContainer" unique_id=1082909694]
+wait_time = 3.0

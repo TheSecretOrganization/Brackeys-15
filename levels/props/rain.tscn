@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c3j1kvhx4s2ob"]
+
+[ext_resource type="Texture2D" uid="uid://bohe08cx0ivmx" path="res://assets/terrain/raindrop.png" id="1_4hgov"]
+[ext_resource type="AudioStream" uid="uid://d0itwe87ptold" path="res://sounds/rain.mp3" id="2_0l6mt"]
+
+[sub_resource type="Curve" id="Curve_0l6mt"]
+_data = [Vector2(0.003597118, 0.691887), 0.0, 0.0, 0, 0, Vector2(1, 0.4213006), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" unique_id=230583248]
+z_index = 10
+amount = 100
+texture = ExtResource("1_4hgov")
+emission_shape = 3
+emission_rect_extents = Vector2(300, 1)
+gravity = Vector2(150, 980)
+scale_amount_curve = SubResource("Curve_0l6mt")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2055672759]
+stream = ExtResource("2_0l6mt")
+autoplay = true

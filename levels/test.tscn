@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bqcnxxc52s2fn" path="res://assets/terrain/background.png" id="2_ny0t1"]
 [ext_resource type="PackedScene" uid="uid://domo5jf13n5pl" path="res://entities/player.tscn" id="3_ny0t1"]
 [ext_resource type="PackedScene" uid="uid://dudv4id5dlynx" path="res://levels/props/checkpoint.tscn" id="6_6g8e2"]
+[ext_resource type="Script" uid="uid://bdvk5s5wxmmn2" path="res://scripts/Dialogue.cs" id="6_u45fp"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r4e4k"]
 distance = -688.0
@@ -201,6 +202,9 @@ terrain_set_0/terrain_0/name = "platform"
 terrain_set_0/terrain_0/color = Color(0.53263843, 0.06466472, 0.80197054, 1)
 sources/0 = SubResource("TileSetAtlasSource_206su")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2grjb"]
+size = Vector2(58, 65)
+
 [node name="Game" type="Node" unique_id=101025080]
 script = ExtResource("1_pnvjf")
 
@@ -214,15 +218,15 @@ tile_map_data = PackedByteArray("AAD+/xkAAAALAAAAAAD+/xoAAAALAAEAAAD+/xsAAAALAAI
 tile_set = SubResource("TileSet_0u6kl")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1001740467]
-visible = false
-color = Color(0.20152658, 0.20152658, 0.20152658, 1)
+position = Vector2(1, -2)
+color = Color(0.15686275, 0.15686275, 0.15686275, 1)
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=2016647512]
 scroll_scale = Vector2(1, 0.7)
 repeat_size = Vector2(1353.815, 0)
 
 [node name="Background" type="Sprite2D" parent="Parallax2D" unique_id=336813519]
-z_index = -1
+z_index = -2
 position = Vector2(677.75, 361.50003)
 scale = Vector2(4.717014, 5.0833335)
 texture = ExtResource("2_ny0t1")
@@ -231,6 +235,16 @@ texture = ExtResource("2_ny0t1")
 position = Vector2(310, 416)
 
 [node name="Checkpoint" parent="." unique_id=1634263764 instance=ExtResource("6_6g8e2")]
-position = Vector2(585, 375)
+position = Vector2(597, 387)
+
+[node name="DialogueTrigger" type="Area2D" parent="." unique_id=1281435591]
+position = Vector2(374, 511)
+script = ExtResource("6_u45fp")
+_texts = PackedStringArray("My spaceship is broken.", "I need to find a engine to fix it!")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueTrigger" unique_id=1380691040]
+shape = SubResource("RectangleShape2D_2grjb")
+debug_color = Color(0.8013492, 0.02320653, 0.9999998, 0.41960785)
 
 [connection signal="body_entered" from="Void" to="." method="_onBodyFallOutOfMap"]
