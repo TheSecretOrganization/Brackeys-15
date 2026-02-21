@@ -8,10 +8,10 @@ public partial class Player : CharacterBody2D, IKillable
     private Sprite2D _sprite2D;
     private RayCast2D _rayCast2D;
 
-    [Export] public float Speed = 20.0f;
-    [Export] public float MaxSpeed = 300.0f;
+    [Export] public float Speed = 250.0f;
+    [Export] public float MaxSpeed = 800.0f;
     [Export] public float BrakingSpeed = 10.0f;
-    [Export] public float JumpVelocity = -500.0f;
+    [Export] public float JumpVelocity = -800.0f;
 
     public override void _Ready()
     {
