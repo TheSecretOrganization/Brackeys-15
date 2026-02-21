@@ -213,6 +213,9 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 metadata/_snap_enabled = true
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qly61"]
+light_mode = 1
+
 [sub_resource type="LabelSettings" id="LabelSettings_rfe5m"]
 font_size = 10
 
@@ -271,6 +274,7 @@ _label = NodePath("Label")
 _timer = NodePath("Timer")
 
 [node name="Label" type="Label" parent="CenterContainer" unique_id=1414607447]
+material = SubResource("CanvasItemMaterial_qly61")
 layout_mode = 2
 label_settings = SubResource("LabelSettings_rfe5m")
 
