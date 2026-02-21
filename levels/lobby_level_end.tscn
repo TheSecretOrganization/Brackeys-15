@@ -141,18 +141,17 @@ scale = Vector2(4, 4)
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=873717380]
 color = Color(0.15686275, 0.15686275, 0.15686275, 1)
 
-[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1043705570]
-scroll_scale = Vector2(1, 0.7)
-repeat_size = Vector2(1353.815, 0)
-
-[node name="Background" type="Sprite2D" parent="Parallax2D" unique_id=953370767]
-z_index = -2
-position = Vector2(677.75, 361.50003)
-scale = Vector2(23.585, 25.415)
-texture = ExtResource("8_fqioi")
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=823906421]
 stream = ExtResource("9_o2teg")
 autoplay = true
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1179648878]
+scroll_scale = Vector2(1, 0.7)
+
+[node name="Background" type="Sprite2D" parent="Parallax2D" unique_id=937708599]
+z_index = -2
+position = Vector2(794.99994, -456)
+scale = Vector2(23.585, 20.140835)
+texture = ExtResource("8_fqioi")
 
 [connection signal="ObjectEnd" from="GoToOutro" to="." method="ChangeScene"]
