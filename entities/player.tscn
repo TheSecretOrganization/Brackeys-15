@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://04gsmpbtlt0u" path="res://assets/entities/player.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://bmb3gusvh5m6v" path="res://entities/Player.cs" id="1_b0kkn"]
+[ext_resource type="Script" uid="uid://b2b73x12ksa70" path="res://entities/PlayerDialogue.cs" id="4_rfe5m"]
 [ext_resource type="PackedScene" uid="uid://c2lciwwnxqn21" path="res://entities/camera.tscn" id="5_qly61"]
-[ext_resource type="Script" path="res://entities/PlayerDialogue.cs" id="5_qly61"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(16, 28)
@@ -246,14 +246,14 @@ anim_player = NodePath("../AnimationPlayer")
 scale = Vector2(4, 4)
 texture = SubResource("GradientTexture2D_rfe5m")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=872283484]
+[node name="Camera2D" parent="." unique_id=1484559342 instance=ExtResource("5_qly61")]
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1391610603 node_paths=PackedStringArray("_label", "_timer")]
 offset_left = -69.0
 offset_top = -41.0
 offset_right = 81.0
 offset_bottom = -27.0
-script = ExtResource("5_qly61")
+script = ExtResource("4_rfe5m")
 _label = NodePath("Label")
 _timer = NodePath("Timer")
 
