@@ -218,15 +218,15 @@ tile_map_data = PackedByteArray("AAD+/xkAAAALAAAAAAD+/xoAAAALAAEAAAD+/xsAAAALAAI
 tile_set = SubResource("TileSet_0u6kl")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1001740467]
-visible = false
-color = Color(0.20152658, 0.20152658, 0.20152658, 1)
+position = Vector2(1, -2)
+color = Color(0.15686275, 0.15686275, 0.15686275, 1)
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=2016647512]
 scroll_scale = Vector2(1, 0.7)
 repeat_size = Vector2(1353.815, 0)
 
 [node name="Background" type="Sprite2D" parent="Parallax2D" unique_id=336813519]
-z_index = -1
+z_index = -2
 position = Vector2(677.75, 361.50003)
 scale = Vector2(4.717014, 5.0833335)
 texture = ExtResource("2_ny0t1")

@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://cl2dm27yaggpa"]
+
+[ext_resource type="Texture2D" uid="uid://dxbuva8of660h" path="res://assets/terrain/lightning/L700-8/L700-8-1.png" id="1_0ubop"]
+[ext_resource type="Texture2D" uid="uid://buiorrbj3dqj1" path="res://assets/terrain/lightning/L700-8/L700-8-2.png" id="2_07hjm"]
+[ext_resource type="Texture2D" uid="uid://clmvmvdccoie5" path="res://assets/terrain/lightning/L700-8/L700-8-3.png" id="3_jowtj"]
+[ext_resource type="Texture2D" uid="uid://db3ijdm72od6u" path="res://assets/terrain/lightning/L700-8/L700-8-4.png" id="4_fl2ci"]
+[ext_resource type="Texture2D" uid="uid://b6ut0y2sojy47" path="res://assets/terrain/lightning/L700-8/L700-8-5.png" id="5_6n872"]
+[ext_resource type="Texture2D" uid="uid://bmbghq703247h" path="res://assets/terrain/lightning/L700-1.png" id="6_jowtj"]
+[ext_resource type="Texture2D" uid="uid://ww2qml3kystd" path="res://assets/terrain/lightning/L700-1-B.png" id="7_fl2ci"]
+[ext_resource type="Texture2D" uid="uid://dgpiun0aiugdh" path="res://assets/terrain/lightning/L700-5.png" id="8_6n872"]
+[ext_resource type="Texture2D" uid="uid://c1u3vqncqv7do" path="res://assets/terrain/lightning/L700-5-B.png" id="9_tfeng"]
+[ext_resource type="Script" uid="uid://dyjuclrbd3c6j" path="res://levels/props/Lightning.cs" id="10_mtls3"]
+[ext_resource type="AudioStream" uid="uid://bnqlca5wekw4l" path="res://sounds/thunder.mp3" id="10_tfeng"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ufscb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_0ubop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_07hjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jowtj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fl2ci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6n872")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fl2ci")
+}],
+"loop": false,
+"name": &"strike_1",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_jowtj")
+}, {
+"duration": 1.5,
+"texture": ExtResource("7_fl2ci")
+}],
+"loop": true,
+"name": &"strike_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_6n872")
+}, {
+"duration": 1.5,
+"texture": ExtResource("9_tfeng")
+}],
+"loop": true,
+"name": &"strike_3",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_pnvjf"]
+resource_name = "LightningStrike"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.85),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.20072804, 0.25035688, 0.3, 0.4, 0.5506587, 0.65, 0.740323, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 5, 6, 5, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2D:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.55, 0.65, 0.85, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6901961), Color(1, 1, 1, 1), Color(1, 1, 1, 0.41568628), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6g8e2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2D:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mtls3"]
+_data = {
+&"LightningStrike": SubResource("Animation_pnvjf"),
+&"RESET": SubResource("Animation_6g8e2")
+}
+
+[sub_resource type="Gradient" id="Gradient_mtls3"]
+offsets = PackedFloat32Array(0.5060241, 0.6325301)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_etm8s"]
+gradient = SubResource("Gradient_mtls3")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Lightning" type="AnimatedSprite2D" unique_id=1414453070]
+sprite_frames = SubResource("SpriteFrames_ufscb")
+animation = &"strike_1"
+script = ExtResource("10_mtls3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1995512592]
+libraries/ = SubResource("AnimationLibrary_mtls3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1628853241]
+stream = ExtResource("10_tfeng")
+
+[node name="Timer" type="Timer" parent="." unique_id=1911263770]
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1455443524]
+position = Vector2(-9.10759e-05, 1.2278557e-05)
+scale = Vector2(30, 16.875)
+enabled = false
+texture = SubResource("GradientTexture2D_etm8s")
