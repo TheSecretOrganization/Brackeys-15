@@ -220,7 +220,6 @@ tile_map_data = PackedByteArray("AAD+/xkAAAALAAAAAAD+/xoAAAALAAEAAAD+/xsAAAALAAI
 tile_set = SubResource("TileSet_0u6kl")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1001740467]
-position = Vector2(1, -2)
 color = Color(0.15686275, 0.15686275, 0.15686275, 1)
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=2016647512]
