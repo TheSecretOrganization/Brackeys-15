@@ -245,6 +245,7 @@ scale = Vector2(4, 4)
 texture = SubResource("GradientTexture2D_rfe5m")
 
 [node name="Camera2D" parent="." unique_id=1484559342 instance=ExtResource("5_qly61")]
+zoom = Vector2(0.3, 0.3)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1391610603 node_paths=PackedStringArray("_label", "_timer")]
 offset_left = -69.0
