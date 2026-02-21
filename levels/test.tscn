@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dudv4id5dlynx" path="res://levels/props/checkpoint.tscn" id="6_6g8e2"]
 [ext_resource type="Script" uid="uid://bdvk5s5wxmmn2" path="res://scripts/AreaDialogue.cs" id="6_u45fp"]
 [ext_resource type="Script" uid="uid://ct0783oy2g3fs" path="res://scripts/Pickable.cs" id="7_2grjb"]
+[ext_resource type="PackedScene" uid="uid://05uc531kdtdm" path="res://levels/props/electrical_wall.tscn" id="7_u45fp"]
 [ext_resource type="Texture2D" uid="uid://c41riujlfrcb5" path="res://assets/misc/basic_item.png" id="8_qhvcx"]
 [ext_resource type="Script" uid="uid://bsgwnm5fqkb" path="res://scripts/events/DialogueEvent.cs" id="9_qhvcx"]
-[ext_resource type="PackedScene" uid="uid://05uc531kdtdm" path="res://levels/props/electrical_wall.tscn" id="7_u45fp"]
+[ext_resource type="AudioStream" uid="uid://b0m6e6pvugkkv" path="res://sounds/Dani Stob - Beyond The Stars - Loop.wav" id="11_eudka"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r4e4k"]
 distance = -688.0
@@ -286,9 +287,6 @@ script = ExtResource("9_qhvcx")
 _player = NodePath("../../Player")
 _dialogue = PackedStringArray("I got that motor!", "Now i can jump every where!")
 
-[connection signal="body_entered" from="Void" to="." method="_onBodyFallOutOfMap"]
-[connection signal="ObjectPicked" from="Engine" to="Event/MotorPicked" method="ShowDialogue"]
-
 [node name="ElectricalWall" parent="." unique_id=1327501286 instance=ExtResource("7_u45fp")]
 position = Vector2(801, 364)
 rotation = 3.1415927
@@ -297,4 +295,10 @@ rotation = 3.1415927
 position = Vector2(628, 516)
 rotation = 4.712389
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2006425688]
+stream = ExtResource("11_eudka")
+autoplay = true
+
+[connection signal="body_entered" from="Void" to="." method="_onBodyFallOutOfMap"]
 [connection signal="body_entered" from="Void" to="." method="OnBodyFallOutOfMap"]
+[connection signal="ObjectPicked" from="Engine" to="Event/MotorPicked" method="ShowDialogue"]
