@@ -28,7 +28,10 @@ public partial class Player : CharacterBody2D, IKillable
         _rayCast2D = GetNode<RayCast2D>("RayCast2D");
         _currentRespawnPosition = GlobalPosition;
 
-        GameEvents.Instance.CheckpointActivated += OnCheckPointActivated;
+        if (GameEvents.Instance != null)
+        {
+            GameEvents.Instance.CheckpointActivated += OnCheckPointActivated;
+        }
     }
 
     public override void _PhysicsProcess(double delta)
@@ -96,7 +99,7 @@ public partial class Player : CharacterBody2D, IKillable
 
         _isDead = true;
         Velocity = Vector2.Zero;
-        _stateMachine.Start("die");
+        _stateMachine.Travel("die");
         var wait = _animationPlayer.GetAnimation("die").Length + ExtraDeathTime;
         await ToSignal(GetTree().CreateTimer(wait), "timeout");
         Respawn();
