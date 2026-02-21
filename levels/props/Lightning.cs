@@ -4,7 +4,7 @@ public partial class Lightning : AnimatedSprite2D
 {
     [Export] public float ThunderMinDelay = 4.0f;
     [Export] public float ThunderMaxDelay = 12.0f;
-    [Export] public int SoundDelayMs = 200;
+    [Export] public float SoundDelay = 0.2f;
     [Export] public float Margin = 200.0f;
 
     private AudioStreamPlayer _audioStreamPlayer;
@@ -17,32 +17,39 @@ public partial class Lightning : AnimatedSprite2D
         _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         _timer = GetNode<Timer>("Timer");
 
-        _timer.Timeout += _thor;
-        _startLightningTimer();
+        _timer.Timeout += Thor;
+        StartLightningTimer();
     }
 
-    private void _startLightningTimer()
+    private void StartLightningTimer()
     {
         var nextStrike = (float)GD.RandRange(ThunderMinDelay, ThunderMaxDelay);
         _timer.WaitTime = nextStrike;
         _timer.Start();
     }
 
-    private async void _thor()
+    private async void Thor()
     {
         var visibleRect = GetViewport().GetVisibleRect();
         var halfWidth = visibleRect.Size.X / 2.0f;
-        var randomX = (float)GD.RandRange(-halfWidth + Margin, halfWidth - Margin);
+        var effectiveMargin = Mathf.Min(Margin, halfWidth);
+        var randomX = (float)GD.RandRange(-halfWidth + effectiveMargin, halfWidth - effectiveMargin);
         Position = new Vector2(randomX, Position.Y);
         FlipH = randomX < 0;
         _animationPlayer.Play("LightningStrike");
 
-        if (SoundDelayMs > 0)
-            await ToSignal(GetTree().CreateTimer(SoundDelayMs / 1000.0f), SceneTreeTimer.SignalName.Timeout);
+        if (SoundDelay > 0)
+            await ToSignal(GetTree().CreateTimer(SoundDelay), SceneTreeTimer.SignalName.Timeout);
 
         _audioStreamPlayer.PitchScale = (float)GD.RandRange(0.8, 1.2);
         _audioStreamPlayer.Play();
 
-        _startLightningTimer();
+        StartLightningTimer();
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        _timer.Timeout -= Thor;
     }
 }
