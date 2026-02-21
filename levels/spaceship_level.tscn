@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://domo5jf13n5pl" path="res://entities/player.tscn" id="5_3am60"]
 [ext_resource type="Texture2D" uid="uid://bkcrmt1iwency" path="res://assets/terrain/engine.png" id="6_b8aeh"]
 [ext_resource type="Texture2D" uid="uid://bsab8xs3qfq3q" path="res://assets/terrain/energy_core.png" id="9_ibsw7"]
+[ext_resource type="AudioStream" uid="uid://b0m6e6pvugkkv" path="res://sounds/Dani Stob - Beyond The Stars - Loop.wav" id="12_gyr6n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bnqy1"]
 texture = ExtResource("1_p0dlw")
@@ -777,3 +778,7 @@ position = Vector2(9152, 3712)
 scale = Vector2(4, 4)
 collision_layer = 7
 collision_mask = 7
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=990322607]
+stream = ExtResource("12_gyr6n")
+autoplay = true
