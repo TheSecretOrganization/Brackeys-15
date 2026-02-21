@@ -4,23 +4,34 @@ using System;
 public partial class Player : CharacterBody2D, IKillable
 {
     private AnimationTree _animationTree;
+    private AnimationPlayer _animationPlayer;
     private AnimationNodeStateMachinePlayback _stateMachine;
     private Sprite2D _sprite2D;
     private RayCast2D _rayCast2D;
+    private Vector2 _currentRespawnPosition = new(0, 0);
+    private bool _isDead = false;
 
-    [Export] public float Speed = 20.0f;
-    [Export] public float MaxSpeed = 300.0f;
+    [Export] public float Speed = 250.0f;
+    [Export] public float MaxSpeed = 450.0f;
     [Export] public float BrakingSpeed = 10.0f;
-    [Export] public float JumpVelocity = -500.0f;
+    [Export] public float JumpVelocity = -800.0f;
+    [Export] public float ExtraDeathTime = 0.5f;
     [Export] public PlayerDialogue Dialogue { get; private set; }
 
     public override void _Ready()
     {
         base._Ready();
         _animationTree = GetNode<AnimationTree>("AnimationTree");
+        _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         _stateMachine = (AnimationNodeStateMachinePlayback)_animationTree.Get("parameters/playback");
         _sprite2D = GetNode<Sprite2D>("Sprite2D");
         _rayCast2D = GetNode<RayCast2D>("RayCast2D");
+        _currentRespawnPosition = GlobalPosition;
+
+        if (GameEvents.Instance != null)
+        {
+            GameEvents.Instance.CheckpointActivated += OnCheckPointActivated;
+        }
     }
 
     public override void _PhysicsProcess(double delta)
@@ -32,7 +43,7 @@ public partial class Player : CharacterBody2D, IKillable
         if (!IsOnFloor())
             velocity += GetGravity() * (float)delta;
 
-        if (_stateMachine.GetCurrentNode() == "dead")
+        if (_isDead)
         {
             Velocity = velocity;
             MoveAndSlide();
@@ -82,21 +93,42 @@ public partial class Player : CharacterBody2D, IKillable
         }
     }
 
-    public void Die()
+    public async void Die()
     {
+        if (_isDead) return;
+
+        _isDead = true;
         Velocity = Vector2.Zero;
-        _stateMachine.Travel("dead");
+        _stateMachine.Travel("die");
+        var wait = _animationPlayer.GetAnimation("die").Length + ExtraDeathTime;
+        await ToSignal(GetTree().CreateTimer(wait), "timeout");
+        Respawn();
     }
 
-    public void Respawn(Vector2 position)
+    public void Respawn()
     {
+        _isDead = false;
         _stateMachine.Travel("idle");
-        Teleport(position);
+        Teleport(_currentRespawnPosition);
     }
 
-    public void Teleport(Vector2 position)
+    private void Teleport(Vector2 position)
     {
         Velocity = Vector2.Zero;
         GlobalPosition = position;
+    }
+
+    private void OnCheckPointActivated(Vector2 position)
+    {
+        _currentRespawnPosition = position;
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing && GameEvents.Instance != null)
+        {
+            GameEvents.Instance.CheckpointActivated -= OnCheckPointActivated;
+        }
+        base.Dispose(disposing);
     }
 }

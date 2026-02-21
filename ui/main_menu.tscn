@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://djpl2ykuglopg" path="res://ui/MainMenu.cs" id="1_7vrkn"]
 [ext_resource type="PackedScene" uid="uid://cbbyrkt3v365c" path="res://levels/intro.tscn" id="2_wk0pr"]
 [ext_resource type="Texture2D" uid="uid://c3he5psiwccsb" path="res://assets/terrain/stars.png" id="4_rmr83"]
+[ext_resource type="AudioStream" uid="uid://vg55mdn3rwai" path="res://sounds/Dani Stob - A New Begining - Loop.wav" id="5_8uxxo"]
 
 [sub_resource type="Animation" id="Animation_wk0pr"]
 length = 0.001
@@ -101,6 +102,10 @@ z_index = -1
 position = Vector2(574.00006, 322.75)
 scale = Vector2(0.29661223, 0.32529306)
 texture = ExtResource("4_rmr83")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1969404261]
+stream = ExtResource("5_8uxxo")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="StartButton"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="QuitButton"]
