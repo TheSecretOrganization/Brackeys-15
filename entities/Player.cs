@@ -9,7 +9,7 @@ public partial class Player : CharacterBody2D, IKillable
     private RayCast2D _rayCast2D;
 
     [Export] public float Speed = 250.0f;
-    [Export] public float MaxSpeed = 800.0f;
+    [Export] public float MaxSpeed = 450.0f;
     [Export] public float BrakingSpeed = 10.0f;
     [Export] public float JumpVelocity = -800.0f;
 
