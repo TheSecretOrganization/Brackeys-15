@@ -1,8 +1,47 @@
 [gd_scene format=3 uid="uid://cg1jk1oupxnup"]
 
-[ext_resource type="Texture2D" uid="uid://dnm7dfl6rgijx" path="res://assets/ui/spaceship.png" id="1_06t4h"]
+[ext_resource type="Texture2D" uid="uid://3ej6ycp74b4e" path="res://assets/entities/spaceship.png" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://djpl2ykuglopg" path="res://ui/MainMenu.cs" id="1_7vrkn"]
-[ext_resource type="PackedScene" uid="uid://c30k0pg4qsa73" path="res://levels/test.tscn" id="2_wk0pr"]
+[ext_resource type="PackedScene" uid="uid://cpf7lcx7b5pdr" path="res://levels/intro.tscn" id="2_wk0pr"]
+[ext_resource type="Texture2D" uid="uid://c3he5psiwccsb" path="res://assets/terrain/stars.png" id="4_rmr83"]
+
+[sub_resource type="Animation" id="Animation_wk0pr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(463, 111)]
+}
+
+[sub_resource type="Animation" id="Animation_rmr83"]
+resource_name = "fly"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 0),
+"update": 0,
+"values": [Vector2(450, 151), Vector2(463, 111), Vector2(502, 238), Vector2(450, 151)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8uxxo"]
+_data = {
+&"RESET": SubResource("Animation_wk0pr"),
+&"fly": SubResource("Animation_rmr83")
+}
 
 [node name="Control" type="Control" unique_id=143279427]
 layout_mode = 3
@@ -36,17 +75,32 @@ text = "Quit
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2037596769]
 layout_mode = 0
-offset_left = 381.0
-offset_top = 173.0
-offset_right = 1008.0
-offset_bottom = 499.0
+offset_left = 463.0
+offset_top = 111.0
+offset_right = 1090.0016
+offset_bottom = 437.00012
 texture = ExtResource("1_06t4h")
 expand_mode = 1
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect" unique_id=1445938376]
+libraries/ = SubResource("AnimationLibrary_8uxxo")
+autoplay = &"fly"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=580606831]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=859740650]
+repeat_size = Vector2(1183.77, 0)
+autoscroll = Vector2(-400, 0)
+
+[node name="Background" type="Sprite2D" parent="Parallax2D" unique_id=328836390]
+z_index = -1
+position = Vector2(574.00006, 322.75)
+scale = Vector2(0.29661223, 0.32529306)
+texture = ExtResource("4_rmr83")
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="StartButton"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="QuitButton"]
