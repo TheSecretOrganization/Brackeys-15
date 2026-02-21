@@ -238,12 +238,12 @@ position = Vector2(310, 416)
 position = Vector2(585, 375)
 
 [node name="DialogueTrigger" type="Area2D" parent="." unique_id=1281435591]
-position = Vector2(382, 526)
+position = Vector2(374, 511)
 script = ExtResource("6_u45fp")
 _texts = PackedStringArray("My spaceship is broken.", "I need to find a engine to fix it!")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueTrigger" unique_id=1380691040]
-position = Vector2(-8, -16)
 shape = SubResource("RectangleShape2D_2grjb")
 debug_color = Color(0.8013492, 0.02320653, 0.9999998, 0.41960785)
 
