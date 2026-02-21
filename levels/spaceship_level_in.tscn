@@ -701,7 +701,7 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_vkgm2")
 
 [sub_resource type="LabelSettings" id="LabelSettings_j24wm"]
-font_size = 20
+font_size = 40
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j24wm"]
 texture = ExtResource("1_7sbrg")
@@ -713,7 +713,7 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_j24wm")
 
 [sub_resource type="LabelSettings" id="LabelSettings_pav0j"]
-font_size = 19
+font_size = 40
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j24wm"]
 size = Vector2(703, 638)
@@ -825,10 +825,10 @@ tile_map_data = PackedByteArray("AABPAEIAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_shgpb")
 
 [node name="PickupCoretext" type="Label" parent="GoToOut" unique_id=1546884664]
-offset_left = -30.0
-offset_top = -249.0
-offset_right = 183.0
-offset_bottom = -226.0
+offset_left = -182.0
+offset_top = -371.0
+offset_right = 331.0
+offset_bottom = -316.0
 text = "Press E to pick up the Core"
 label_settings = SubResource("LabelSettings_j24wm")
 
@@ -856,15 +856,15 @@ tile_map_data = PackedByteArray("AAB6ADwAAAAGAAIAAAA=")
 tile_set = SubResource("TileSet_qf6u7")
 
 [node name="Pickupsinktext" type="Label" parent="PickUpHeatSink" unique_id=184079487]
-offset_left = 2519.0
-offset_top = -584.0
-offset_right = 2732.0
-offset_bottom = -561.0
+offset_left = 2390.0
+offset_top = -690.0
+offset_right = 2923.0
+offset_bottom = -635.0
 text = "Press E to pick up Heat Sink"
 label_settings = SubResource("LabelSettings_pav0j")
 
 [node name="Player" parent="." unique_id=1983695808 instance=ExtResource("5_3am60")]
-position = Vector2(7934, 3671)
+position = Vector2(7949, 3662)
 scale = Vector2(4, 4)
 collision_layer = 7
 collision_mask = 7
