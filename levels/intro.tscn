@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dj7d7lvw3sjch" path="res://scripts/LoadScene.cs" id="1_32ggn"]
 [ext_resource type="Texture2D" uid="uid://3ej6ycp74b4e" path="res://assets/entities/spaceship.png" id="1_q3mgg"]
 [ext_resource type="Texture2D" uid="uid://cx0twrubtmff0" path="res://assets/misc/explosion.png" id="2_7ba2f"]
-[ext_resource type="PackedScene" uid="uid://c30k0pg4qsa73" path="res://levels/test.tscn" id="2_086ed"]
+[ext_resource type="PackedScene" uid="uid://bf8hdlayub5ul" path="res://levels/lobby_level.tscn" id="2_086ed"]
 [ext_resource type="Texture2D" uid="uid://c3he5psiwccsb" path="res://assets/terrain/stars.png" id="5_086ed"]
 
 [sub_resource type="AudioStreamWAV" id="AudioStreamWAV_086ed"]
