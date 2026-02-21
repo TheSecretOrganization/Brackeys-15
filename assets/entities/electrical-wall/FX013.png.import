@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djjkw2yag026j"
-path="res://.godot/imported/FX014.png-1e014234a94c675b31c754c9501112c4.ctex"
+uid="uid://bj07a6gdkhexu"
+path="res://.godot/imported/FX013.png-483e0841ebcb8eee2bf561fe7c0e0930.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/entities/eletrical-wall/FX014.png"
-dest_files=["res://.godot/imported/FX014.png-1e014234a94c675b31c754c9501112c4.ctex"]
+source_file="res://assets/entities/electrical-wall/FX013.png"
+dest_files=["res://.godot/imported/FX013.png-483e0841ebcb8eee2bf561fe7c0e0930.ctex"]
 
 [params]
 
