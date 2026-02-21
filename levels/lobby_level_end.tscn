@@ -110,7 +110,7 @@ label_settings = SubResource("LabelSettings_2m1si")
 [node name="DialogueTrigger" type="Area2D" parent="." unique_id=862440604]
 position = Vector2(-1565, 463)
 script = ExtResource("7_vu5sc")
-_texts = PackedStringArray("I repaired my spaceship, I can leave", "", "", "Note: Poochie Died on the way back to his home planet")
+_texts = PackedStringArray("I repaired my spaceship, I can leave")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueTrigger" unique_id=378393454]
 position = Vector2(322.5, -40)

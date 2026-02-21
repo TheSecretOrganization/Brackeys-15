@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://cj47j1qnmxbi1"]
 
+[ext_resource type="Script" uid="uid://buhubrpd3xetk" path="res://scripts/OutroText.cs" id="1_st4sk"]
 [ext_resource type="Texture2D" uid="uid://3ej6ycp74b4e" path="res://assets/entities/spaceship.png" id="3_upc38"]
 [ext_resource type="Texture2D" uid="uid://cx0twrubtmff0" path="res://assets/misc/explosion.png" id="4_x2re4"]
 [ext_resource type="Texture2D" uid="uid://c3he5psiwccsb" path="res://assets/terrain/stars.png" id="5_7nnqm"]
@@ -176,31 +177,31 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0, 1.1098737]
 }
-tracks/5/type = "method"
+tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
+tracks/5/path = NodePath("ExplosionSound:playing")
+tracks/5/interp = 0
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(6.3333335),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"ChangeScene"
-}]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("ExplosionSound:playing")
-tracks/6/interp = 0
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(3.8666666, 4.1666665, 4.4333334),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, true, true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(6.366667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"PrintOutro"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a3se8"]
@@ -209,7 +210,9 @@ _data = {
 &"cinematic": SubResource("Animation_mhym6")
 }
 
-[node name="Cinematic" type="Node2D" unique_id=2133693625]
+[node name="Cinematic" type="Node2D" unique_id=2133693625 node_paths=PackedStringArray("_label")]
+script = ExtResource("1_st4sk")
+_label = NodePath("Funtext")
 
 [node name="ExplosionSound" type="AudioStreamPlayer" parent="." unique_id=5907629]
 stream = SubResource("AudioStreamWAV_086ed")
@@ -247,3 +250,9 @@ z_index = -1
 position = Vector2(574.00006, 322.75)
 scale = Vector2(0.29661223, 0.32529306)
 texture = ExtResource("5_7nnqm")
+
+[node name="Funtext" type="Label" parent="." unique_id=1140277591]
+offset_left = 532.0
+offset_top = 92.0
+offset_right = 929.0
+offset_bottom = 174.0
