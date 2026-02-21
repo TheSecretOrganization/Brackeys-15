@@ -13,7 +13,7 @@ public partial class Pickable : Area2D
         BodyEntered += EnterArea;
         BodyExited += LeaveArea;
     }
-    
+
     public override void _Process(double delta)
     {
         if (_inArea && Input.IsActionJustPressed("interact"))
@@ -39,5 +39,5 @@ public partial class Pickable : Area2D
         _hint.Text = "";
         _inArea = false;
     }
-    
+
 }
