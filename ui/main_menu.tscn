@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://3ej6ycp74b4e" path="res://assets/entities/spaceship.png" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://djpl2ykuglopg" path="res://ui/MainMenu.cs" id="1_7vrkn"]
-[ext_resource type="PackedScene" uid="uid://cpf7lcx7b5pdr" path="res://levels/intro.tscn" id="2_wk0pr"]
+[ext_resource type="PackedScene" uid="uid://cbbyrkt3v365c" path="res://levels/intro.tscn" id="2_wk0pr"]
 [ext_resource type="Texture2D" uid="uid://c3he5psiwccsb" path="res://assets/terrain/stars.png" id="4_rmr83"]
 
 [sub_resource type="Animation" id="Animation_wk0pr"]
