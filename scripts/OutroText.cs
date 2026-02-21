@@ -1,7 +1,5 @@
 using Godot;
 
-using Godot;
-
 public partial class OutroText : Node2D
 {
     [Export] private Label _label;
