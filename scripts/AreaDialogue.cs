@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class Dialogue : Area2D
+public partial class AreaDialogue : Area2D
 {
 
     [Export] private string[] _texts;
