@@ -1,9 +1,9 @@
 using Godot;
 
-public partial class GoSpaceship : Area2D
+public partial class GoOutro : Area2D
 {
 
-    [Signal] public delegate void ObjectSpaceshipEventHandler();
+    [Signal] public delegate void ObjectOutroEventHandler();
     [Export] private Label _hint;
 
     private bool _inArea;
@@ -14,17 +14,17 @@ public partial class GoSpaceship : Area2D
         BodyExited += LeaveArea;
     }
 
-    private void PickItem()
-    {
-        QueueFree();
-        EmitSignalObjectSpaceship();
-    }
-
     private void EnterArea(Node2D body)
     {
         if (body is not Player) return;
 
         PickItem();
+    }
+
+    private void PickItem()
+    {
+        QueueFree();
+        EmitSignalObjectOutro();
     }
 
     private void LeaveArea(Node2D body)

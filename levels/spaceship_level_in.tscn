@@ -854,7 +854,6 @@ _player = NodePath("../../Player")
 _dialogue = PackedStringArray("Heat sink aquired", "I just have to find the energy core        ")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=234284064]
-visible = false
 color = Color(0.15686275, 0.15686275, 0.15686275, 1)
 
 [node name="DialogueTrigger" type="Area2D" parent="." unique_id=1749108690]

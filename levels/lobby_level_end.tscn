@@ -1,12 +1,43 @@
 [gd_scene format=4 uid="uid://d3o2dorg8hvl6"]
 
 [ext_resource type="Script" uid="uid://dj7d7lvw3sjch" path="res://scripts/LoadScene.cs" id="1_qp7f1"]
-[ext_resource type="PackedScene" uid="uid://bh3l3o21tba7m" path="res://levels/spaceship_level_in.tscn" id="2_o2teg"]
+[ext_resource type="PackedScene" uid="uid://cj47j1qnmxbi1" path="res://levels/outro.tscn" id="2_qp7f1"]
 [ext_resource type="Texture2D" uid="uid://dqfk5pyft2rv0" path="res://assets/terrain/grass.png" id="3_fq5pd"]
 [ext_resource type="Texture2D" uid="uid://3ej6ycp74b4e" path="res://assets/entities/spaceship.png" id="4_2m1si"]
+[ext_resource type="Script" uid="uid://qftif725v4b4" path="res://scripts/GoEnd.cs" id="4_qp7f1"]
 [ext_resource type="PackedScene" uid="uid://domo5jf13n5pl" path="res://entities/player.tscn" id="5_gfc0n"]
 [ext_resource type="Script" uid="uid://bdvk5s5wxmmn2" path="res://scripts/AreaDialogue.cs" id="7_vu5sc"]
 [ext_resource type="Texture2D" uid="uid://bqcnxxc52s2fn" path="res://assets/terrain/background.png" id="8_fqioi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2teg"]
+size = Vector2(707, 389)
+
+[sub_resource type="FontFile" id="FontFile_fq5pd"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/8/0/ascent = 0.0
+cache/0/8/0/descent = 0.0
+cache/0/8/0/underline_position = 0.0
+cache/0/8/0/underline_thickness = 0.0
+cache/0/8/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_2m1si"]
+font_size = 8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k17w5"]
 size = Vector2(703, 638)
@@ -53,11 +84,31 @@ sources/0 = SubResource("TileSetAtlasSource_3o0md")
 [node name="LobbyLevel" type="Node2D" unique_id=1497871049]
 position = Vector2(-1, 0)
 script = ExtResource("1_qp7f1")
-_scene = ExtResource("2_o2teg")
+_scene = ExtResource("2_qp7f1")
 metadata/_edit_horizontal_guides_ = [600.0]
 
+[node name="GoToOutro" type="Area2D" parent="." unique_id=82638246 node_paths=PackedStringArray("_hint")]
+position = Vector2(1622, 694)
+script = ExtResource("4_qp7f1")
+_hint = NodePath("Label")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoToOutro" unique_id=1559960542]
+position = Vector2(-21.5, -191.5)
+shape = SubResource("RectangleShape2D_o2teg")
+debug_color = Color(0.6183317, 0.53565395, 0, 0.41960785)
+
+[node name="Label" type="Label" parent="GoToOutro" unique_id=379503142]
+offset_left = -297.0
+offset_top = -368.0
+offset_right = 149.0
+offset_bottom = -282.0
+theme_override_fonts/font = SubResource("FontFile_fq5pd")
+theme_override_font_sizes/font_size = 90
+label_settings = SubResource("LabelSettings_2m1si")
+
 [node name="DialogueTrigger" type="Area2D" parent="." unique_id=862440604]
-position = Vector2(1213, 445)
+position = Vector2(-1565, 463)
 script = ExtResource("7_vu5sc")
 _texts = PackedStringArray("I repaired my spaceship, I can leave", "", "", "Note: Poochie Died on the way back to his home planet")
 
@@ -83,7 +134,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("4_2m1si")
 
 [node name="Player" parent="." unique_id=1983695808 instance=ExtResource("5_gfc0n")]
-position = Vector2(2049, 579)
+position = Vector2(-1681, 577)
 scale = Vector2(4, 4)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=873717380]
@@ -98,3 +149,5 @@ z_index = -2
 position = Vector2(677.75, 361.50003)
 scale = Vector2(23.585, 25.415)
 texture = ExtResource("8_fqioi")
+
+[connection signal="ObjectEnd" from="GoToOutro" to="." method="ChangeScene"]

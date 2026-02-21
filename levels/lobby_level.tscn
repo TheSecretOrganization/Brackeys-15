@@ -116,11 +116,9 @@ position = Vector2(2160, 577)
 scale = Vector2(4, 4)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=873717380]
-visible = false
 color = Color(0.15686275, 0.15686275, 0.15686275, 1)
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1043705570]
-visible = false
 scroll_scale = Vector2(1, 0.7)
 repeat_size = Vector2(1353.815, 0)
 
