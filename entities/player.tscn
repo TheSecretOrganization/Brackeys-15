@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://04gsmpbtlt0u" path="res://assets/entities/player.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://bmb3gusvh5m6v" path="res://entities/Player.cs" id="1_b0kkn"]
 [ext_resource type="PackedScene" uid="uid://c2lciwwnxqn21" path="res://entities/camera.tscn" id="5_qly61"]
+[ext_resource type="Script" path="res://entities/PlayerDialogue.cs" id="5_qly61"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(16, 28)
@@ -211,8 +212,15 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 metadata/_snap_enabled = true
 
-[node name="Player" type="CharacterBody2D" unique_id=1983695808]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qly61"]
+light_mode = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_rfe5m"]
+font_size = 10
+
+[node name="Player" type="CharacterBody2D" unique_id=1983695808 node_paths=PackedStringArray("Dialogue")]
 script = ExtResource("1_b0kkn")
+Dialogue = NodePath("CenterContainer")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=714899606]
@@ -238,4 +246,21 @@ anim_player = NodePath("../AnimationPlayer")
 scale = Vector2(4, 4)
 texture = SubResource("GradientTexture2D_rfe5m")
 
-[node name="Camera2D" parent="." unique_id=1484559342 instance=ExtResource("5_qly61")]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=872283484]
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1391610603 node_paths=PackedStringArray("_label", "_timer")]
+offset_left = -69.0
+offset_top = -41.0
+offset_right = 81.0
+offset_bottom = -27.0
+script = ExtResource("5_qly61")
+_label = NodePath("Label")
+_timer = NodePath("Timer")
+
+[node name="Label" type="Label" parent="CenterContainer" unique_id=1414607447]
+material = SubResource("CanvasItemMaterial_qly61")
+layout_mode = 2
+label_settings = SubResource("LabelSettings_rfe5m")
+
+[node name="Timer" type="Timer" parent="CenterContainer" unique_id=1082909694]
+wait_time = 3.0
