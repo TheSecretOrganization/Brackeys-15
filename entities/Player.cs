@@ -11,10 +11,10 @@ public partial class Player : CharacterBody2D, IKillable
     private Vector2 _currentRespawnPosition = new(0, 0);
     private bool _isDead = false;
 
-    [Export] public float Speed = 20.0f;
-    [Export] public float MaxSpeed = 300.0f;
+    [Export] public float Speed = 250.0f;
+    [Export] public float MaxSpeed = 450.0f;
     [Export] public float BrakingSpeed = 10.0f;
-    [Export] public float JumpVelocity = -500.0f;
+    [Export] public float JumpVelocity = -800.0f;
     [Export] public float ExtraDeathTime = 0.5f;
     [Export] public PlayerDialogue Dialogue { get; private set; }
 
