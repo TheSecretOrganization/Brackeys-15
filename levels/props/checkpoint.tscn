@@ -1,12 +1,89 @@
 [gd_scene format=3 uid="uid://dudv4id5dlynx"]
 
 [ext_resource type="Script" uid="uid://cl86m2tjbtqd2" path="res://levels/props/Checkpoint.cs" id="1_tstqn"]
+[ext_resource type="Texture2D" uid="uid://bfcop76dqmr7t" path="res://assets/terrain/campfire/F500-1.PNG" id="2_5fvgk"]
+[ext_resource type="Texture2D" uid="uid://bgmoglxftji5c" path="res://assets/terrain/campfire/F500-2.PNG" id="3_sy5wr"]
+[ext_resource type="Texture2D" uid="uid://cvho4w1f5iiyp" path="res://assets/terrain/campfire/F500-3.PNG" id="4_xrnjn"]
+[ext_resource type="Texture2D" uid="uid://pq4keub0k5e7" path="res://assets/terrain/campfire/F500-4.PNG" id="5_1mate"]
+[ext_resource type="Texture2D" uid="uid://c5p0qm1curwf6" path="res://assets/terrain/campfire/F500-5.PNG" id="6_ni62g"]
+[ext_resource type="Texture2D" uid="uid://b2kb6ihsoi46m" path="res://assets/terrain/campfire/F500-6.PNG" id="7_fd54l"]
+[ext_resource type="Texture2D" uid="uid://iucj2qo05dki" path="res://assets/terrain/campfire/F500-7.PNG" id="8_umgmk"]
+[ext_resource type="Texture2D" uid="uid://d4hpbhjjyudv0" path="res://assets/terrain/campfire/F500-8.PNG" id="9_uhatt"]
+[ext_resource type="Texture2D" uid="uid://bhiolvm0kwduj" path="res://assets/terrain/campfire/F500-9.PNG" id="10_ipqqd"]
+[ext_resource type="Texture2D" uid="uid://ckgufv64cj4bi" path="res://assets/terrain/campfire/F500-10.PNG" id="11_r3m51"]
+[ext_resource type="Texture2D" uid="uid://cxialyikbsgpe" path="res://assets/terrain/campfire/F500-11.PNG" id="12_onwo8"]
+[ext_resource type="Texture2D" uid="uid://djnai425e536g" path="res://assets/terrain/campfire/F500-12.PNG" id="13_tibs5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xam77"]
-size = Vector2(46, 49)
+size = Vector2(25, 24.333332)
+
+[sub_resource type="Gradient" id="Gradient_amgto"]
+offsets = PackedFloat32Array(0.20481928, 0.43975905, 0.6506024)
+colors = PackedColorArray(1, 0.7176471, 0.07450981, 1, 0.7044058, 0.42132652, 0.04861708, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s0mkj"]
+gradient = SubResource("Gradient_amgto")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xyipw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5fvgk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sy5wr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xrnjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1mate")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ni62g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fd54l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_umgmk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_uhatt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ipqqd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_r3m51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_onwo8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tibs5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Checkpoint" type="Area2D" unique_id=1634263764]
 script = ExtResource("1_tstqn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=986401763]
+position = Vector2(0, -2)
+scale = Vector2(1.2, 1.2)
 shape = SubResource("RectangleShape2D_xam77")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=658420718]
+texture = SubResource("GradientTexture2D_s0mkj")
+
+[node name="Campfire" type="AnimatedSprite2D" parent="." unique_id=1798349209]
+position = Vector2(2.1684043e-19, 7.1054274e-15)
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_xyipw")
+autoplay = "default"
+frame_progress = 0.18651998
