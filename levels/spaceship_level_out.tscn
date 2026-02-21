@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://domo5jf13n5pl" path="res://entities/player.tscn" id="11_olfgp"]
 [ext_resource type="Script" uid="uid://qftif725v4b4" path="res://scripts/GoEnd.cs" id="13_41uxy"]
 [ext_resource type="Script" uid="uid://bdvk5s5wxmmn2" path="res://scripts/AreaDialogue.cs" id="13_nuo0o"]
+[ext_resource type="PackedScene" uid="uid://05uc531kdtdm" path="res://levels/props/electrical_wall.tscn" id="15_ybawo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c04uq"]
 texture = ExtResource("2_art11")
@@ -829,5 +830,33 @@ offset_bottom = -282.0
 theme_override_fonts/font = SubResource("FontFile_41uxy")
 theme_override_font_sizes/font_size = 90
 label_settings = SubResource("LabelSettings_ybawo")
+
+[node name="ElectricalWall" parent="." unique_id=1327501286 instance=ExtResource("15_ybawo")]
+position = Vector2(6844, 3660)
+rotation = 3.1415927
+scale = Vector2(8, 12)
+
+[node name="ElectricalWall5" parent="." unique_id=1300221936 instance=ExtResource("15_ybawo")]
+position = Vector2(5494, 3238.0002)
+scale = Vector2(8, 15)
+
+[node name="ElectricalWall6" parent="." unique_id=1501350433 instance=ExtResource("15_ybawo")]
+position = Vector2(7466, 1713)
+scale = Vector2(4, 8)
+
+[node name="ElectricalWall2" parent="." unique_id=455035644 instance=ExtResource("15_ybawo")]
+position = Vector2(2155, 3730.9998)
+rotation = 4.712389
+scale = Vector2(5, 12)
+
+[node name="ElectricalWall3" parent="." unique_id=1238198740 instance=ExtResource("15_ybawo")]
+position = Vector2(2917.9998, 3241)
+rotation = 1.5707964
+scale = Vector2(4, 10)
+
+[node name="ElectricalWall4" parent="." unique_id=392779691 instance=ExtResource("15_ybawo")]
+position = Vector2(3290.0002, 3207)
+rotation = 4.712389
+scale = Vector2(4, 10)
 
 [connection signal="ObjectEnd" from="GoToEnd" to="." method="ChangeScene"]
