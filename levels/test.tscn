@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://ct0783oy2g3fs" path="res://scripts/Pickable.cs" id="7_2grjb"]
 [ext_resource type="Texture2D" uid="uid://c41riujlfrcb5" path="res://assets/misc/basic_item.png" id="8_qhvcx"]
 [ext_resource type="Script" uid="uid://bsgwnm5fqkb" path="res://scripts/events/DialogueEvent.cs" id="9_qhvcx"]
+[ext_resource type="PackedScene" uid="uid://05uc531kdtdm" path="res://levels/props/electrical_wall.tscn" id="7_u45fp"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r4e4k"]
 distance = -688.0
@@ -218,6 +219,7 @@ font_size = 8
 script = ExtResource("1_pnvjf")
 
 [node name="Void" type="Area2D" parent="." unique_id=1394541601]
+position = Vector2(16, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Void" unique_id=1647840910]
 shape = SubResource("WorldBoundaryShape2D_r4e4k")
@@ -227,7 +229,6 @@ tile_map_data = PackedByteArray("AAD+/xkAAAALAAAAAAD+/xoAAAALAAEAAAD+/xsAAAALAAI
 tile_set = SubResource("TileSet_0u6kl")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1001740467]
-position = Vector2(1, -2)
 color = Color(0.15686275, 0.15686275, 0.15686275, 1)
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=2016647512]
@@ -250,7 +251,6 @@ position = Vector2(597, 387)
 position = Vector2(374, 511)
 script = ExtResource("6_u45fp")
 _texts = PackedStringArray("My spaceship is broken.", "I need to find a engine to fix it!")
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueTrigger" unique_id=1380691040]
 shape = SubResource("RectangleShape2D_2grjb")
@@ -288,3 +288,13 @@ _dialogue = PackedStringArray("I got that motor!", "Now i can jump every where!"
 
 [connection signal="body_entered" from="Void" to="." method="_onBodyFallOutOfMap"]
 [connection signal="ObjectPicked" from="Engine" to="Event/MotorPicked" method="ShowDialogue"]
+
+[node name="ElectricalWall" parent="." unique_id=1327501286 instance=ExtResource("7_u45fp")]
+position = Vector2(801, 364)
+rotation = 3.1415927
+
+[node name="ElectricalWall2" parent="." unique_id=275912029 instance=ExtResource("7_u45fp")]
+position = Vector2(628, 516)
+rotation = 4.712389
+
+[connection signal="body_entered" from="Void" to="." method="OnBodyFallOutOfMap"]
