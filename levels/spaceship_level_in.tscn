@@ -864,7 +864,7 @@ text = "Press E to pick up Heat Sink"
 label_settings = SubResource("LabelSettings_pav0j")
 
 [node name="Player" parent="." unique_id=1983695808 instance=ExtResource("5_3am60")]
-position = Vector2(7949, 3662)
+position = Vector2(9886, 3624)
 scale = Vector2(4, 4)
 collision_layer = 7
 collision_mask = 7
