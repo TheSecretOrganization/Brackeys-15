@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2lciwwnxqn21"]
 
 [ext_resource type="PackedScene" uid="uid://c3j1kvhx4s2ob" path="res://levels/props/rain.tscn" id="1_ixxe8"]
-[ext_resource type="PackedScene" uid="uid://duoveemsoak3w" path="res://levels/props/lightning.tscn" id="2_ukrcf"]
+[ext_resource type="PackedScene" uid="uid://cl2dm27yaggpa" path="res://levels/props/lightning.tscn" id="2_ukrcf"]
 
 [node name="Camera2D" type="Camera2D" unique_id=1484559342]
 
